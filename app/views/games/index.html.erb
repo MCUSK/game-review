@@ -8,7 +8,7 @@
         <ul id="menuber">
             <li>TOP PAGE</li>
             <li>ジャンル</li>
-            <li>メール</li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :DELETE %></li>
         </ul>
     </div>
 
@@ -19,40 +19,31 @@
         <div id="left"></div>
 
         <div id="main">
+            <% @games.each do |game|%>
             <div class="article">
+                <%= link_to game.url do %>
                 <%=image_tag("https://images-na.ssl-images-amazon.com/images/I/71utlQnFxOL._SY679_.jpg",alt:"image",height:"200", width:"100",style:"object-fit:contain;float:left;") %>
-                <div class="game_title">タイトル</div>
-                <div class="detail">詳細</div>
+                <% end %>
+                <p class="game_title">
+                    <%= game.title %>
+                </p>
+                <p>ジャンル:<%= game.genre.name %></p>
+                <div class="detail">
+                    <%= simple_format(h(game.detail)) %>
+                </div>
                 <div class="comment">
-                レビューをみる
+                    <%= link_to "レビューをみる", game_path(game.id) %>
                 </div>
             </div>
+            <% end %>
 
-            <div class="article">
-                <%=image_tag("https://images-na.ssl-images-amazon.com/images/I/71utlQnFxOL._SY679_.jpg",alt:"image",height:"200", width:"100",style:"object-fit:contain;float:left;") %>
-                <div class="game_title">タイトル</div>
-                <div class="detail">詳細</div>
-                <div class="comment">
-                レビューをみる
-                </div>
-            </div>
-
-            <div class="article">
-                <%=image_tag("https://images-na.ssl-images-amazon.com/images/I/71utlQnFxOL._SY679_.jpg",alt:"image",height:"200", width:"100",style:"object-fit:contain;float:left;") %>
-                <div class="game_title">タイトル</div>
-                <div class="detail">詳細</div>
-                <div class="comment">
-                レビューをみる
-                </div>
-            </div>
-        </div>
 
 
         <div class="clear"></div>
     </div>
     <div id="footer_outline">
-     <footer>
-     footer
-     </footer>
+    <footer>
+    footer
+    </footer>
     </div>
 </div>

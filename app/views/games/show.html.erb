@@ -21,11 +21,22 @@
         <div id="main">
             <div class="article">
                 <%=image_tag("https://images-na.ssl-images-amazon.com/images/I/71utlQnFxOL._SY679_.jpg",alt:"image",height:"200", width:"100",style:"object-fit:contain;float:left;") %>
-                <div class="game_title">タイトル</div>
-                <div class="detail">詳細</div>
-                <div class="comment">
+                <div class="game_title"><%= @game.title %></div>
+                <p>ジャンル:<%= @game.genre.name %></p>
+                <div class="detail">
+                    <%= simple_format(h(@game.detail)) %>
                 </div>
             </div>
+                <% @reviews.each do |review| %>
+                    <div class="comment">
+                        <h4><%= review.title %></h4>
+                        <h4>
+                        <%= review.score %>/10
+                        </h4>
+                        <p><%= review.review %></p>
+                        <p><%= review.user.name%></p>
+                    </div>
+                <% end %>
         </div>
 
 

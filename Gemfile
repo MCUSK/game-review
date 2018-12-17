@@ -58,3 +58,8 @@ gem 'compass-rails', '3.1.0'
 gem 'devise'
 gem 'rails_admin'
 gem 'cancan'
+gem 'carrierwave'
+
+group :production do
+    gem 'unicorn'
+end
